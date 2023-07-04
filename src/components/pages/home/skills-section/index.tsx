@@ -16,7 +16,7 @@ export function SkillsSection() {
     setIsShowingHardSkills(showHardSkills);
   };
   return (
-    <section className="container py-16">
+    <section id="skills" className="container py-16">
       <SectionTitle
         icon={
           isShowingHardSkills ? (
@@ -31,7 +31,7 @@ export function SkillsSection() {
 
       <Divider />
 
-      <nav className="flex justify-center my-10 font-mono">
+      <nav className="flex justify-center my-10 font-mono max-w-full overflow-hidden">
         <motion.button
           className={`mr-4  font-medium ${
             !isShowingHardSkills ? 'text-blue-500' : 'text-gray-500'
@@ -58,7 +58,7 @@ export function SkillsSection() {
         </motion.button>
       </nav>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-3 mt-16">
+      <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-3 mt-16">
         {isShowingHardSkills
           ? Array.from({ length: 6 }).map((_, index) => (
               <motion.div

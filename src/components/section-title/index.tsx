@@ -25,7 +25,7 @@ export const SectionTitle = ({
   };
 
   return (
-    <div className={cn('flex flex-col gap-4', className)}>
+    <div className={cn('flex flex-col gap-3 max-w-full', className)}>
       <motion.span
         className="font-mono text-sm text-blue-400"
         {...animProps}

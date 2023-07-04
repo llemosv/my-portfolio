@@ -2,6 +2,8 @@ import { Inter, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import { ReactNode } from 'react';
 import { Header } from '@/components/header/index';
+import { Footer } from '@/components/footer';
+import { ButtonGoToTop } from '@/components/button-go-to-top';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -18,8 +20,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${plexMono.variable}`}>
       <body>
+        <ButtonGoToTop />
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -7,9 +7,9 @@ import { ProjectCard } from './project-card';
 import { motion } from 'framer-motion';
 import { techBadgeAnimation } from '@/lib/animations';
 
-export function Projects() {
+export function ProjectsSection() {
   return (
-    <section className="container py-16">
+    <section id="projects" className="container py-16">
       <SectionTitle
         subtitle="projects"
         title="Projetos"
@@ -28,13 +28,6 @@ export function Projects() {
             <ProjectCard />
           </motion.div>
         ))}
-
-        {/* <Divider className="my-16" /> */}
-
-        {/* <Link href="/projects">
-          Ver todos os projetos
-          <HiArrowNarrowRight />
-        </Link> */}
       </div>
     </section>
   );

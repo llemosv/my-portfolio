@@ -25,7 +25,7 @@ const MOCK_CONTACTS = [
 export function SidebarIcons() {
   return (
     <motion.div
-      className="w-10 hidden xl:flex fixed bottom-0 left-10 right-auto z-10 text-gray-500"
+      className="w-10 hidden xl:flex fixed bottom-0 left-10 right-auto z-10 text-gray-400"
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}

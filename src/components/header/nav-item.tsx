@@ -1,6 +1,4 @@
-import { cn } from '@/lib/utils';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link } from 'react-scroll';
 
 type NavItemProps = {
   id: string;
@@ -9,16 +7,12 @@ type NavItemProps = {
 };
 
 export function NavItem({ id, label, href }: NavItemProps) {
-  const pathname = usePathname();
-
-  const isActiveRouter = pathname === href;
   return (
     <Link
-      href={href}
-      className={cn(
-        'text-gray-400 flex items-center gap-2 font-medium font-mono hover:text-blue-400 transition duration-200',
-        isActiveRouter && 'text-gray-200'
-      )}
+      to={href}
+      smooth={true}
+      duration={500}
+      className="text-gray-300 flex items-center gap-2 font-medium font-mono hover:text-blue-400 transition duration-200 cursor-pointer"
     >
       <span className="text-blue-400 text-sm">{id}. </span>
       {label}

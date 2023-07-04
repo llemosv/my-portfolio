@@ -3,7 +3,7 @@ import { Button } from '@/components/button';
 
 export function ProjectCard() {
   return (
-    <div className="shadow-light flex flex-col h-[500px] w-auto max-w-[335px] bg-blue-950/30 hover:translate-y-[-2px] transition-transform duration-200 rounded-lg">
+    <div className="shadow-light flex flex-col h-auto w-auto max-w-[335px] bg-blue-950/30 hover:translate-y-[-2px] transition-transform duration-200 rounded-lg">
       <div className="flex flex-grow">
         <Image
           width={420}
@@ -13,9 +13,10 @@ export function ProjectCard() {
           className="w-full h-full rounded-t-lg object-cover"
         />
       </div>
-      <div className="flex flex-col justify-start items-start p-10 gap-3 h-[55%]">
-        <p className="text-sm text-gray-400">ReactJS</p>
+      <div className="flex flex-col justify-start items-start px-8 py-6 gap-4 h-[65%]">
         <h1 className="font-medium text-lg">dtMoney</h1>
+        <p className="text-sm text-blue-500/80">ReactJS, Stiches</p>
+
         <p className="text-gray-400">
           Aplicação desenvolvida durante o curso Ignite oferecido pela
           Rocketseat.
