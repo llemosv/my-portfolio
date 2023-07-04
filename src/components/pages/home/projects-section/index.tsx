@@ -6,8 +6,13 @@ import { MdOutlineFolder } from 'react-icons/md';
 import { ProjectCard } from './project-card';
 import { motion } from 'framer-motion';
 import { techBadgeAnimation } from '@/lib/animations';
+import { ProjectType } from '@/types/page';
 
-export function ProjectsSection() {
+type ProjectsSessionType = {
+  projects: ProjectType[];
+};
+
+export function ProjectsSection({ projects }: ProjectsSessionType) {
   return (
     <section id="projects" className="container py-16">
       <SectionTitle
@@ -18,14 +23,20 @@ export function ProjectsSection() {
 
       <Divider className="mb-16" />
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-x-3 gap-y-6">
-        {Array.from({ length: 4 }).map((_, index) => (
+      <div className="flex-1 grid grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-x-3 gap-y-6">
+        {projects.map((project, i) => (
           <motion.div
-            key={index}
+            key={project.id}
             {...techBadgeAnimation}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
+            transition={{ duration: 0.3, delay: i * 0.1 }}
           >
-            <ProjectCard />
+            <ProjectCard
+              name={project.name}
+              description={project.description}
+              imageUrl={project.projectImage.url}
+              repositoryUrl={project.repositoryUrl}
+              technologies={project.technologies}
+            />
           </motion.div>
         ))}
       </div>

@@ -2,14 +2,20 @@
 import { SectionTitle } from '@/components/section-title';
 import { CardSkill } from './card-skill';
 import { motion } from 'framer-motion';
-import { TbBrandNextjs } from 'react-icons/tb';
 import { MdOutlineRocketLaunch } from 'react-icons/md';
-import { RiTeamLine } from 'react-icons/ri';
 import { GiBrain } from 'react-icons/gi';
 
 import { useState } from 'react';
 import { Divider } from '@/components/divider';
-export function SkillsSection() {
+import { HardSkillsType, SoftSkillsType } from '@/types/page';
+import { CMSIcon } from '@/components/cms-icon';
+
+type SkillsProps = {
+  softSkills: SoftSkillsType[];
+  hardSkills: HardSkillsType[];
+};
+
+export function SkillsSection({ softSkills, hardSkills }: SkillsProps) {
   const [isShowingHardSkills, setIsShowingHardSkills] = useState(false);
 
   const handleNavClick = (showHardSkills: boolean) => {
@@ -60,36 +66,35 @@ export function SkillsSection() {
 
       <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-3 mt-16">
         {isShowingHardSkills
-          ? Array.from({ length: 6 }).map((_, index) => (
+          ? hardSkills.map((skill, i) => (
               <motion.div
-                key={index}
+                key={skill.id}
                 initial={{ opacity: 0, x: -100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.15, delay: index * 0.1 }}
+                transition={{ duration: 0.15, delay: i * 0.1 }}
               >
                 <CardSkill
                   tech={{
-                    icon: <TbBrandNextjs />,
-                    name: 'Next.js',
-                    startDate: '2023-01-01',
+                    icon: <CMSIcon icon={skill.iconSvg} />,
+                    name: skill.name,
+                    startDate: skill.startDate,
                   }}
                 />
               </motion.div>
             ))
-          : Array.from({ length: 5 }).map((_, index) => (
+          : softSkills.map((skill, i) => (
               <motion.div
-                key={index}
+                key={skill.id}
                 initial={{ opacity: 0, x: -100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.15, delay: index * 0.1 }}
+                transition={{ duration: 0.15, delay: i * 0.1 }}
               >
                 <CardSkill
                   tech={{
-                    icon: <RiTeamLine />,
-                    name: 'Trabalho em equipe',
-                    //startDate: '2023-01-01',
+                    icon: <CMSIcon icon={skill.iconSvg} />,
+                    name: skill.name,
                   }}
                 />
               </motion.div>

@@ -6,6 +6,8 @@ import {
   TbBrandWhatsapp,
 } from 'react-icons/tb';
 import { motion } from 'framer-motion';
+import { SocialsType } from '@/types/page';
+import { CMSIcon } from '../cms-icon';
 
 const MOCK_CONTACTS = [
   {
@@ -22,7 +24,11 @@ const MOCK_CONTACTS = [
   },
 ];
 
-export function SidebarIcons() {
+type IconsProps = {
+  socialsContent: SocialsType[];
+};
+
+export function SidebarIcons({ socialsContent }: IconsProps) {
   return (
     <motion.div
       className="w-10 hidden xl:flex fixed bottom-0 left-10 right-auto z-10 text-gray-400"
@@ -32,17 +38,17 @@ export function SidebarIcons() {
       transition={{ duration: 0.5, delay: 3 * 0.1 }}
     >
       <ul className="flex flex-col items-center gap-8">
-        {MOCK_CONTACTS.map((contact, i) => (
+        {socialsContent.map((contact) => (
           <li
-            key={i}
+            key={contact.id}
             className="hover:translate-y-[-3px] transition-transform duration-200"
           >
             <a
               href={contact.url}
               target="_blank"
-              className="hover:text-blue-400"
+              className="hover:text-blue-400 text-xl"
             >
-              {contact.icon}
+              <CMSIcon icon={contact.iconSvg} />
             </a>
           </li>
         ))}

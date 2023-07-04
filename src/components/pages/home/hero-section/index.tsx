@@ -1,30 +1,16 @@
 'use client';
+
 import { HiArrowRight } from 'react-icons/hi';
-import {
-  TbBrandGithub,
-  TbBrandLinkedin,
-  TbBrandWhatsapp,
-} from 'react-icons/tb';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
+import { RichText } from '@/components/rich-text';
+import { PageInfo } from '@/types/page';
 
-const MOCK_CONTACTS = [
-  {
-    url: 'https://github.com/llemosv',
-    icon: <TbBrandGithub />,
-  },
-  {
-    url: 'https://www.linkedin.com/in/leonardo-lemos-673122210/',
-    icon: <TbBrandLinkedin />,
-  },
-  {
-    url: 'https://github.com/llemosv',
-    icon: <TbBrandWhatsapp />,
-  },
-];
+type HomeProps = {
+  homeContent: PageInfo;
+};
 
-export function HeroSection() {
+export function HeroSection({ homeContent }: HomeProps) {
   const animProps = {
     initial: { opacity: 0, x: -100 },
     whileInView: { opacity: 1, x: 0 },
@@ -52,34 +38,27 @@ export function HeroSection() {
             Leonardo Lemos
           </motion.h2>
 
-          <motion.p
+          <motion.div
             className="text-gray-400 mt-6 text-sm sm:text-base leading-relaxed"
             {...animProps}
             transition={{ duration: 0.5, delay: 3 * 0.1 }}
           >
-            Sou Desenvolvedor Full-Stack com uma paixão especial pelo Front-End.
-            As techs que mais curto utilizar são React, Next.js, Tailwind CSS e
-            Styled Components.
-          </motion.p>
-          <motion.p
+            <RichText content={homeContent.introduction1.raw} />
+          </motion.div>
+          <motion.div
             className="text-gray-400 mt-5 text-sm sm:text-base leading-relaxed"
             {...animProps}
             transition={{ duration: 0.5, delay: 4 * 0.1 }}
           >
-            Iniciei minha carreira como desenvolvedor em Agosto de 2021 como
-            estagiário e, após um ano, tive a oportunidade de ser efetivado.
-            Também estou cursando o 5º período de Sistemas de Informação!
-          </motion.p>
-          <motion.p
+            <RichText content={homeContent.introduction2.raw} />
+          </motion.div>
+          <motion.div
             className="text-gray-400 mt-5 text-sm sm:text-base leading-relaxed"
             {...animProps}
             transition={{ duration: 0.5, delay: 5 * 0.1 }}
           >
-            Meu objetivo como profissional é buscar desenvolver aplicações
-            atraentes, performáticas e funcionais para o usuário final. Sempre
-            busco me manter atualizado sobre o mercado para sempre utilizar as
-            melhores práticas e técnicas! 🚀
-          </motion.p>
+            <RichText content={homeContent.introduction3.raw} />
+          </motion.div>
 
           <Link to="contact" smooth={true} duration={500}>
             <motion.button
@@ -100,7 +79,10 @@ export function HeroSection() {
           whileInView={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 150 }}
           transition={{ duration: 0.4, delay: 1 * 0.1 }}
-          className="h-[22rem] w-[17rem] bg-me relative bg-[50%] bg-no-repeat bg-cover border-2 border-gray-200/50 rounded-full lg:h-[27rem] lg:w-[22rem] animate-wave-animation transition-all duration-1000 ease-in-out"
+          style={{
+            background: `url(${homeContent.profilePicture.url}) no-repeat center/cover`,
+          }}
+          className="h-[22rem] w-[17rem] relative bg-[50%] border-2 border-gray-200/50 rounded-full lg:h-[27rem] lg:w-[22rem] animate-wave-animation transition-all duration-1000 ease-in-out"
         />
       </div>
     </section>

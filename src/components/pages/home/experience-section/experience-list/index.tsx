@@ -1,6 +1,4 @@
-import { TechCard } from '@/components/tech-card';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ExperienceItem } from './experience-item';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';

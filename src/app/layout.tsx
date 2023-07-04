@@ -4,6 +4,13 @@ import { ReactNode } from 'react';
 import { Header } from '@/components/header/index';
 import { Footer } from '@/components/footer';
 import { ButtonGoToTop } from '@/components/button-go-to-top';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '<llemosv />',
+  description:
+    'Welcome to Leonardo Lemos portfolio. Happy coding and have a nice day',
+};
 
 const inter = Inter({
   variable: '--font-inter',

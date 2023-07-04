@@ -12,7 +12,6 @@ module.exports = {
     extend: {
       backgroundImage: {
         stars: "url('/images/bg-stars.svg')",
-        me: "url('/images/leonardo.jpg')",
       },
       fontFamily: {
         mono: ['var(--font-plex-mono)', 'monospace'],

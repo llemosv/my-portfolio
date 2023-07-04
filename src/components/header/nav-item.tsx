@@ -12,9 +12,9 @@ export function NavItem({ id, label, href }: NavItemProps) {
       to={href}
       smooth={true}
       duration={500}
-      className="text-gray-300 flex items-center gap-2 font-medium font-mono hover:text-blue-400 transition duration-200 cursor-pointer"
+      className="text-gray-300 flex items-center gap-2 font-medium text-sm font-mono hover:text-blue-400 transition duration-200 cursor-pointer"
     >
-      <span className="text-blue-400 text-sm">{id}. </span>
+      <span className="text-blue-400 text-xs">{id}. </span>
       {label}
     </Link>
   );
