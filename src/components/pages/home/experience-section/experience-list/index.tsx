@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ExperienceItem } from './experience-item';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { ExperienceType } from '@/types/page';
 
 const experiences = [
   {
@@ -42,8 +43,12 @@ const experiences = [
   },
 ];
 
-export function ExperienceList() {
-  const [selectedExperience, setSelectedExperience] = useState<number>(
+type ExperienceListProps = {
+  experiences: ExperienceType[];
+};
+
+export function ExperienceList({ experiences }: ExperienceListProps) {
+  const [selectedExperience, setSelectedExperience] = useState<string>(
     experiences[0].id
   );
 

@@ -4,8 +4,13 @@ import { Divider } from '@/components/divider';
 import { SectionTitle } from '@/components/section-title';
 import { MdComputer } from 'react-icons/md';
 import { ExperienceList } from './experience-list';
+import { ExperienceType } from '@/types/page';
 
-export function ExperienceSection() {
+type ExperienceSectionProps = {
+  experiences: ExperienceType[];
+};
+
+export function ExperienceSection({ experiences }: ExperienceSectionProps) {
   return (
     <section id="experience" className="container py-16">
       <SectionTitle
@@ -16,7 +21,7 @@ export function ExperienceSection() {
       <Divider className="mb-8" />
 
       <div className="overflow-hidden">
-        <ExperienceList />
+        <ExperienceList experiences={experiences} />
       </div>
     </section>
   );

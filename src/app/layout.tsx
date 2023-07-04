@@ -1,10 +1,14 @@
-import { Inter, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { Inter, IBM_Plex_Mono } from 'next/font/google';
 import { ReactNode } from 'react';
 import { Header } from '@/components/header/index';
 import { Footer } from '@/components/footer';
 import { ButtonGoToTop } from '@/components/button-go-to-top';
 import { Metadata } from 'next';
+import { ToastContainer } from 'react-toastify';
+import ToastProvider from '@/components/toast-provider';
 
 export const metadata: Metadata = {
   title: '<llemosv />',
@@ -27,10 +31,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${plexMono.variable}`}>
       <body>
-        <ButtonGoToTop />
-        <Header />
-        {children}
-        <Footer />
+        <ToastProvider>
+          <ButtonGoToTop />
+          <Header />
+          {children}
+          <Footer />
+        </ToastProvider>
       </body>
     </html>
   );

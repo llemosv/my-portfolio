@@ -40,20 +40,29 @@ const getPageData = async (): Promise<PageData> => {
       profilePicture {
         url
       }
-       projects {
-      id
-      name
-      technologies
-      description
-      repositoryUrl
-      projectImage {
-        url
+      projects {
+        id
+        name
+        technologies
+        description
+        repositoryUrl
+        projectImage {
+          url
+        }
+      }
+      experiences(orderBy: endDate_DESC) {
+        id
+        company
+        office
+        startDate
+        endDate
+        experienceDescriptions {
+          id
+          text
+        }
       }
     }
-    }
-   
   }
-  
   `;
 
   const revalidateTime = 60 * 60 * 24; // 1 day
@@ -71,7 +80,7 @@ export default async function Home() {
         hardSkills={pageData.hardSkills}
       />
       <ProjectsSection projects={pageData.projects} />
-      <ExperienceSection />
+      <ExperienceSection experiences={pageData.experiences} />
       <ContactSection />
       <SidebarIcons socialsContent={pageData.socials} />
     </>

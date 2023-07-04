@@ -3,7 +3,6 @@
 import { Divider } from '@/components/divider';
 import { Form } from '@/components/forms';
 import { SectionTitle } from '@/components/section-title';
-import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { MdComputer } from 'react-icons/md';
 import { z } from 'zod';
@@ -11,6 +10,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/button';
 import { motion } from 'framer-motion';
 import { fadeUpAnimation, techBadgeAnimation } from '@/lib/animations';
+import { EmailJSResponseStatus, send } from '@emailjs/browser';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const sendEmailSchema = z.object({
   name: z
@@ -55,42 +57,40 @@ const sendEmailSchema = z.object({
 type SendEmailData = z.infer<typeof sendEmailSchema>;
 
 export function ContactSection() {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   const createUserForm = useForm<SendEmailData>({
     resolver: zodResolver(sendEmailSchema),
   });
 
-  const {
-    handleSubmit,
-    formState: { isSubmitting },
-    reset,
-  } = createUserForm;
+  const { handleSubmit, reset } = createUserForm;
 
   const sendMail = async (data: SendEmailData) => {
     setLoading(true);
-    alert('oi');
-    setLoading(false);
-    // const templateParams = {
-    //     from_name: data.name,
-    //     message: data.message,
-    //     email: data.email
-    // }
+    const templateParams = {
+      from_name: data.name,
+      message: data.message,
+      email: data.email,
+    };
 
-    // send(import.meta.env.VITE_EMAIL_SERVICE_ID,
-    //     import.meta.env.VITE_EMAIL_TEMPLATE_ID,
-    //     templateParams,
-    //     import.meta.env.VITE_EMAIL_PUBLIC_KEY)
-    //     .then((response: EmailJSResponseStatus) => {
-    //         console.log('response', response);
-    //         setLoading(false);
-    //         toast.success('Email enviado com sucesso! 😁');
-    //         reset();
-    //     }, (error: any) => {
-    //         console.error('error', error);
-    //         setLoading(false);
-    //         toast.error('Ocorreu um erro ao enviar o email! 😥');
-    //     });
+    send(
+      process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID!,
+      templateParams,
+      process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
+    )
+      .then(
+        (response: EmailJSResponseStatus) => {
+          toast.success('Email enviado com sucesso! 😁');
+          reset();
+        },
+        (error: any) => {
+          toast.error('Ocorreu um erro ao enviar o email! 😥');
+        }
+      )
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -136,7 +136,7 @@ export function ContactSection() {
               <Form.ErrorMessage field="message" />
             </Form.Field>
 
-            <Button type="submit" className="w-full">
+            <Button type="submit" loading={loading} className="w-full">
               Enviar
             </Button>
           </motion.form>

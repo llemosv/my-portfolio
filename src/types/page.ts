@@ -1,5 +1,19 @@
 import type { RichTextContent } from '@graphcms/rich-text-types';
 
+type ExperienceDescription = {
+  id: string;
+  text: string;
+};
+
+export type ExperienceType = {
+  id: string;
+  company: string;
+  office: string;
+  startDate: string;
+  endDate: string | null;
+  experienceDescriptions: ExperienceDescription[];
+};
+
 export type ProjectType = {
   id: string;
   name: string;
@@ -48,6 +62,7 @@ export type PageInfo = {
     url: string;
   };
   projects: ProjectType[];
+  experiences: ExperienceType[];
 };
 
 export type PageData = {
