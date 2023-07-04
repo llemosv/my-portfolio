@@ -8,7 +8,7 @@ const NAV_ITEMS = [
   {
     id: '01',
     label: 'Home',
-    href: '/',
+    href: 'home',
   },
   {
     id: '02',

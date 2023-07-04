@@ -17,7 +17,10 @@ export function HeroSection({ homeContent }: HomeProps) {
     exit: { opacity: 0, x: -100 },
   };
   return (
-    <section className="w-full lg:h-[785px] bg-stars bg-center flex flex-col justify-center pb-10 sm:pb-32 py-32  2xl:pb-1">
+    <section
+      id="home"
+      className="w-full lg:h-[785px] bg-stars bg-center flex flex-col justify-center pb-10 sm:pb-32 py-32  2xl:pb-1"
+    >
       {/* Blur */}
       <div className="absolute top-1/2 mr-auto transform -translate-y-1/2 -translate-x-1/2 h-[288px] w-[600px] rounded-full bg-blue-300 opacity-20 blur-full" />
 

@@ -38,8 +38,7 @@ export function ErrorMessage({ field }: ErrorMessageProps) {
       transition={{ duration: 0.5 }}
       className="text-xs text-red-500 mt-1 font-medium"
     >
-      {fieldError.message?.toString()}
+      {fieldError.message?.toString() || ''}
     </motion.span>
-    // <span className="text-xs text-red-500 mt-1">{fieldError.message?.toString()}</span>
   );
 }
