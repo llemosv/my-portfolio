@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { RichText } from '@/components/rich-text';
 import { PageInfo } from '@/types/page';
+import { CMSIcon } from '@/components/cms-icon';
 
 type HomeProps = {
   homeContent: PageInfo;
@@ -24,7 +25,7 @@ export function HeroSection({ homeContent }: HomeProps) {
       {/* Blur */}
       <div className="absolute top-1/2 mr-auto transform -translate-y-1/2 -translate-x-1/2 h-[288px] w-[600px] rounded-full bg-blue-300 opacity-20 blur-full" />
 
-      <div className="container overflow-hidden gap-12 lg:gap-0 flex items-start justify-between flex-col-reverse md:flex-row">
+      <div className="container overflow-hidden gap-12 lg:gap-0 flex items-start justify-between flex-col-reverse lg:flex-row">
         <div className="w-full lg:max-w-[530px]">
           <motion.p
             className="font-mono text-blue-400"
@@ -75,6 +76,27 @@ export function HeroSection({ homeContent }: HomeProps) {
               </span>
             </motion.button>
           </Link>
+
+          <motion.ul
+            className="flex xl:hidden items-center gap-6 mt-6"
+            {...animProps}
+            transition={{ duration: 0.6, delay: 7 * 0.1 }}
+          >
+            {homeContent.socials.map((contact, i) => (
+              <li
+                key={contact.id}
+                className="hover:translate-y-[-3px] transition-transform duration-200"
+              >
+                <a
+                  href={contact.url}
+                  target="_blank"
+                  className="text-gray-400 hover:text-blue-400 text-xl"
+                >
+                  <CMSIcon icon={contact.iconSvg} />
+                </a>
+              </li>
+            ))}
+          </motion.ul>
         </div>
 
         <motion.div

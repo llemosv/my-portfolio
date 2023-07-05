@@ -7,13 +7,16 @@ import { Header } from '@/components/header/index';
 import { Footer } from '@/components/footer';
 import { ButtonGoToTop } from '@/components/button-go-to-top';
 import { Metadata } from 'next';
-import { ToastContainer } from 'react-toastify';
 import ToastProvider from '@/components/toast-provider';
 
 export const metadata: Metadata = {
   title: '<llemosv />',
   description:
-    'Welcome to Leonardo Lemos portfolio. Happy coding and have a nice day',
+    'Welcome to Leonardo Lemos portfolio. Have a nice day and a good experience!',
+  openGraph: {
+    images: ['url(/favicon.ico'],
+    authors: 'Leonardo Lemos',
+  },
 };
 
 const inter = Inter({
