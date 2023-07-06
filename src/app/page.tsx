@@ -1,3 +1,5 @@
+import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
 import { SidebarIcons } from '@/components/icons';
 import { ContactSection } from '@/components/pages/home/contact-section';
 import { ExperienceSection } from '@/components/pages/home/experience-section';
@@ -74,15 +76,21 @@ export default async function Home() {
   const { page: pageData } = await getPageData();
   return (
     <>
-      <HeroSection homeContent={pageData} />
-      <SkillsSection
-        softSkills={pageData.softSkills}
-        hardSkills={pageData.hardSkills}
-      />
-      <ProjectsSection projects={pageData.projects} />
-      <ExperienceSection experiences={pageData.experiences} />
-      <ContactSection />
-      <SidebarIcons socialsContent={pageData.socials} />
+      <Header />
+
+      <main>
+        <HeroSection homeContent={pageData} />
+        <SkillsSection
+          softSkills={pageData.softSkills}
+          hardSkills={pageData.hardSkills}
+        />
+        <ProjectsSection projects={pageData.projects} />
+        <ExperienceSection experiences={pageData.experiences} />
+        <ContactSection />
+        <SidebarIcons socialsContent={pageData.socials} />
+      </main>
+
+      <Footer />
     </>
   );
 }

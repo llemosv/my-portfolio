@@ -36,9 +36,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <ToastProvider>
           <ButtonGoToTop />
-          <Header />
           {children}
-          <Footer />
         </ToastProvider>
       </body>
     </html>
